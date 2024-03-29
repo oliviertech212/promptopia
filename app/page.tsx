@@ -1,4 +1,5 @@
 import React from "react";
+import Feed from "@/components/Feed";
 
 const HomePAge = () => {
   return (
@@ -14,6 +15,8 @@ const HomePAge = () => {
           discover , create and share creative prompts
         </p>
         {/* feed */}
+
+        <Feed />
       </section>
     </>
   );
