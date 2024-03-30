@@ -23,7 +23,7 @@ const PromptCard = ({
   };
 
   const handleUsernameClick = () => {
-    router.push(`/profile/${post.userId._id}`);
+    router.push(`/profile`);
   };
 
   return (
