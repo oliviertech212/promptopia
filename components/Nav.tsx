@@ -56,7 +56,7 @@ const Nav = () => {
 
               <Link href="/profile">
                 <Image
-                  src={session?.user.image}
+                  src={session?.user.image || "/assets/images/user.svg"}
                   width={37}
                   height={37}
                   className="rounded-full"
@@ -73,7 +73,7 @@ const Nav = () => {
                     className="black_btn"
                     key={provider.name}
                     onClick={() => {
-                      signIn(provider.id);
+                      signIn(provider?.id);
                     }}
                   >
                     sign In

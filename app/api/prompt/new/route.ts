@@ -3,8 +3,6 @@ import Prompt from "@/models/prompt.model";
 
 export async function POST(request: any) {
   const { userId, prompt, tag } = await request.json();
-
-  console.log("server request", userId, prompt, tag);
   try {
     await connectToDB();
 
