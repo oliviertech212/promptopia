@@ -5,16 +5,22 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import { AiOutlineCopy } from "react-icons/ai";
 const PromptCard = ({
   post,
   handleTagClick,
   handleEdit,
   handleDelete,
 }: any) => {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<String>();
   const { data: session } = useSession();
   const router = useRouter();
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(post.prompt);
+    setCopied(post.prompt);
+    setTimeout(() => setCopied(""), 3000);
+  };
 
   const handleUsernameClick = () => {
     router.push(`/profile/${post.userId._id}`);
@@ -37,15 +43,15 @@ const PromptCard = ({
             </p>
           </div>
         </div>
-        <div className="bopy_btn ">
+        <div className="bopy_btn " onClick={handleCopy}>
           <Image
             src={
               copied === post.prompt
-                ? "/assets/images/tick.svg"
-                : "/assets/images/coopy.svg"
+                ? "/assets/icons/tick.svg"
+                : "/assets/icons/copy.svg"
             }
-            width={12}
-            height={12}
+            width={20}
+            height={20}
             alt="copy"
           />
         </div>
