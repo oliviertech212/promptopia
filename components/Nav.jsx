@@ -11,7 +11,6 @@ const Nav = () => {
 
   const { data: session } = useSession();
 
-  console.log("sessiondat", session);
   const [providers, setProviders] = useState(null);
   const [toggledrpdown, setToggledropdown] = useState(false);
 
@@ -24,7 +23,6 @@ const Nav = () => {
     setproviders();
   }, []);
 
-  console.log(session?.user, "providers", providers);
   return (
     <>
       <nav className=" flex-between w-full mb-16 pt-3">
