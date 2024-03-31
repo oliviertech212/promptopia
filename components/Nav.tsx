@@ -11,7 +11,6 @@ const Nav = () => {
 
   const { data: session } = useSession();
 
-  console.log("sessiondat", session);
   const [providers, setProviders] = useState(null);
   const [toggledrpdown, setToggledropdown] = useState(false);
 
@@ -24,10 +23,9 @@ const Nav = () => {
     setproviders();
   }, []);
 
-  console.log(session?.user, "providers", providers);
   return (
     <>
-      <nav className=" flex-between w-full mb-16 pt-3">
+      <nav className=" flex-between w-full mb-2 pt-3  ">
         <Link href="/" className="flex  gap-2 flex-center">
           <Image
             src="/assets/images/logo.svg"
@@ -58,7 +56,7 @@ const Nav = () => {
 
               <Link href="/profile">
                 <Image
-                  src={session?.user.image}
+                  src={session?.user.image || "/assets/images/user.svg"}
                   width={37}
                   height={37}
                   className="rounded-full"
@@ -75,7 +73,7 @@ const Nav = () => {
                     className="black_btn"
                     key={provider.name}
                     onClick={() => {
-                      signIn(provider.id);
+                      signIn(provider?.id);
                     }}
                   >
                     sign In

@@ -27,6 +27,7 @@ export default function RootLayout({
           </div>
           <main className="app">
             <Nav />
+            <hr className="h-2  w-full  mt-0 mb-16" />
             {children}
           </main>
         </Provider>
