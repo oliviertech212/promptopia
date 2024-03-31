@@ -22,7 +22,7 @@ const ProfilePage = () => {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log("data", data);
+      // console.log("data", data);
       setPosts(posts.filter((p: Prompt) => p._id !== post._id));
     }
   };
