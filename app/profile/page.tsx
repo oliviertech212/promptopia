@@ -29,7 +29,7 @@ const ProfilePage = () => {
 
   return (
     <Profile
-      name="MyProfile"
+      name="My"
       desc="Welcome to your profile page"
       data={posts}
       handleEdit={handleEdit}
