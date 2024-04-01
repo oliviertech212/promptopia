@@ -23,23 +23,28 @@ const PromptCard = ({
   };
 
   const handleUsernameClick = () => {
-    router.push(`/profile/${post.userId._id}`);
+    router.push(`/profile`);
   };
 
   return (
     <div className="prompt_card ">
       <div className="flex justify-between items-start gap-5">
         <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
-          <Image src={post.userId.image} width={40} height={40} alt="profile" />
+          <Image
+            src={post && post.userId?.image}
+            width={40}
+            height={40}
+            alt="profile"
+          />
           <div className="flex flex-col">
             <p
               onClick={handleUsernameClick}
               className="font-semibold font-satoshi text-gray-900  cursor-pointer"
             >
-              {post.userId.username}
+              {post.userId?.username}
             </p>
             <p className="text-sm font-inter text-gray-500">
-              {post.userId.email}
+              {post.userId?.email}
             </p>
           </div>
         </div>

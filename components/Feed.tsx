@@ -11,7 +11,7 @@ type user = {
   image: string;
   _id: string;
 };
-type Prompt = {
+export type Prompt = {
   prompt: string;
   tag: string;
   _id: string;
