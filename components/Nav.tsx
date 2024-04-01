@@ -11,12 +11,13 @@ const Nav = () => {
 
   const { data: session } = useSession();
 
-  const [providers, setProviders] = useState(null);
+  const [providers, setProviders] = useState<any>(null);
   const [toggledrpdown, setToggledropdown] = useState(false);
 
   useEffect(() => {
     const setproviders = async () => {
       const reponse = await getProviders();
+
       setProviders(reponse);
     };
 
@@ -67,7 +68,7 @@ const Nav = () => {
           ) : (
             <>
               {providers &&
-                Object.values(providers).map((provider) => (
+                Object.values(providers).map((provider: any) => (
                   <button
                     type="button"
                     className="black_btn"
@@ -88,7 +89,7 @@ const Nav = () => {
           {session?.user ? (
             <div className="flex">
               <Image
-                src={session?.user.image}
+                src={session?.user.image || ""}
                 width={37}
                 height={37}
                 className="rounded-full"
@@ -136,7 +137,7 @@ const Nav = () => {
           ) : (
             <>
               {providers &&
-                Object.values(providers).map((provider) => (
+                Object.values(providers).map((provider: any) => (
                   <button
                     type="button"
                     className="black_btn"

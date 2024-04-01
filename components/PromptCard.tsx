@@ -70,6 +70,7 @@ const PromptCard = ({
       >
         {post.tag}
       </span>
+      {/* @ts-ignore */}
       {session?.user?.id === post.userId?._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3 ">
           <p

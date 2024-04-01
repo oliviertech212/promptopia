@@ -40,11 +40,13 @@ const ProfilePage = () => {
   useEffect(() => {
     // Fetch all prompts
     const fetchprompts = async () => {
+      // @ts-ignore
       const response = await fetch(`/api/users/${session?.user?.id}/posts`);
       const data = await response.json();
       // console.log("prompts", data);
       setPosts(data);
     };
+    // @ts-ignore
     if (session?.user?.id) fetchprompts();
   }, []);
 
