@@ -32,22 +32,39 @@ const PromptCardList = ({ data, handleTagClick }: any) => {
   );
 };
 const Feed = () => {
-  const [searchText, setSearchText] = useState();
+  const [searchText, setSearchText] = useState<any>();
   const [prompts, setPrompts] = useState([]);
+  const [filteredPrompts, setFilteredPrompts] = useState([]);
 
   useEffect(() => {
     // Fetch all prompts
     const fetchprompts = async () => {
       const response = await fetch("/api/prompt");
       const data = await response.json();
-      // console.log("prompts", data);
       setPrompts(data);
     };
-
     fetchprompts();
   }, []);
 
-  const handleSearchChange = () => {};
+  const handleSearchChange = (value: String) => {
+    let filteredData = prompts.filter((prompt: Prompt) => {
+      if (
+        prompt.userId.username.toLowerCase().includes(value.toLowerCase()) &&
+        !value.includes("#")
+      ) {
+        return prompt;
+      }
+      if (
+        prompt.tag.toLowerCase().includes(value.toLowerCase()) &&
+        value.includes("#")
+      ) {
+        return prompt;
+      }
+    });
+
+    if (filteredData.length !== 0) setFilteredPrompts(filteredData);
+    setSearchText(value);
+  };
 
   return (
     <section className="feed">
@@ -56,12 +73,15 @@ const Feed = () => {
           type="text"
           placeholder="Search for a tag or a username"
           value={searchText}
-          onChange={handleSearchChange}
+          onChange={(e) => handleSearchChange(e.target.value)}
           required
           className="search_input peer "
         />
       </form>
-      <PromptCardList data={prompts} handleTagClick={() => {}} />
+      <PromptCardList
+        data={searchText ? filteredPrompts : prompts}
+        handleTagClick={() => {}}
+      />
     </section>
   );
 };
