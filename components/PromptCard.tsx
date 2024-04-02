@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { AiOutlineCopy } from "react-icons/ai";
 const PromptCard = ({
   post,
@@ -25,6 +25,8 @@ const PromptCard = ({
   const handleUsernameClick = () => {
     router.push(`/profile`);
   };
+
+  const pathName = usePathname();
 
   return (
     <div className="prompt_card ">
@@ -68,6 +70,23 @@ const PromptCard = ({
       >
         {post.tag}
       </span>
+      {/* @ts-ignore */}
+      {session?.user?.id === post.userId?._id && pathName === "/profile" && (
+        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3 ">
+          <p
+            className="font-inter text-sm green_gradient cursor-pointer"
+            onClick={handleEdit}
+          >
+            Edit
+          </p>
+          <p
+            className="font-inter text-sm  text-[red] cursor-pointer"
+            onClick={handleDelete}
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   );
 };
