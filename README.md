@@ -10,3 +10,4 @@
 - Run build then npm run start or use npm run dev
 
 . Test also can be done on the deployed version
+https://promptopia-sable-kappa.vercel.app/
