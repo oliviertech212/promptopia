@@ -80,7 +80,7 @@ const Feed = () => {
       </form>
       <PromptCardList
         data={searchText ? filteredPrompts : prompts}
-        handleTagClick={() => {}}
+        handleTagClick={(e: any) => handleSearchChange(e)}
       />
     </section>
   );

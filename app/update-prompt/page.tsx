@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@/components/Form";
+import { Suspense } from "react";
 
 const EditPrompt = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -58,13 +59,15 @@ const EditPrompt = () => {
   };
   return (
     <>
-      <Form
-        type="Update"
-        post={post}
-        setPost={setPost}
-        submitting={submitting}
-        handleSubmit={updateprompt}
-      />
+      <Suspense>
+        <Form
+          type="Update"
+          post={post}
+          setPost={setPost}
+          submitting={submitting}
+          handleSubmit={updateprompt}
+        />
+      </Suspense>
     </>
   );
 };

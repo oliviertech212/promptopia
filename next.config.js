@@ -3,6 +3,18 @@ const nextConfig = {
   images: {
     domains: ["lh3.googleusercontent.com"],
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 module.exports = nextConfig;
+
+// module.exports = {
+//   images: {
+//     domains: ["lh3.googleusercontent.com"],
+//   },
+//   experimental: {
+//     missingSuspenseWithCSRBailout: false,
+//   },
+// };

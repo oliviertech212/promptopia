@@ -22,8 +22,8 @@ const PromptCard = ({
     setTimeout(() => setCopied(""), 3000);
   };
 
-  const handleUsernameClick = () => {
-    router.push(`/profile`);
+  const handleUsernameClick = (userId: string) => {
+    router.push(`/profile?id=${userId}`);
   };
 
   const pathName = usePathname();
@@ -40,7 +40,7 @@ const PromptCard = ({
           />
           <div className="flex flex-col">
             <p
-              onClick={handleUsernameClick}
+              onClick={() => handleUsernameClick(post.userId?._id)}
               className="font-semibold font-satoshi text-gray-900  cursor-pointer"
             >
               {post.userId?.username}
